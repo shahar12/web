@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="style.css">
-
+<script>
+    const list_pok = fetch("/api/pokimons").then(res=>res.json());
+    console.log({list_pok});
+</script>
 <body>
     <h1><b>
             All Pokimones
     </b></h1>
     <div class="scroll_box">
-        <div class="load_pokimon_list">
-            
-        </div>
+        <div class="pokimon_box"></div>
     </div>
 </body>
 
