@@ -3,10 +3,11 @@ const path = require('path');
 const { send } = require('process');
 app = express();
 const port = 3035 ;
+let popularty_pokimons = new Array(150).fill(0);
+
 
 const pokimon_data = require('./data/pokemons.json');
 /* crate array for popularty of pokimons */
-let popularty_pokimons = new Array(150).fill(0);
 
 app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
@@ -14,6 +15,8 @@ app.use("/popularty",function(req, res){
 
 /* give acsses from html to all the files in folder static-assets */
 app.use("/assets",express.static("static-assets"));
+
+app.get("/api/pic/")
 
 
 /* return pokimon by id    */
