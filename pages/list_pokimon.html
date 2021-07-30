@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
-        body{
-            background-color:chocolate;
+        body {
+            background-color: chocolate;
             text-indent: 20px;
             margin: 5px;
-            padding:5px; 
+            padding: 5px;
         }
-        #pokimon_box{
-            background-color:antiquewhite;
+        
+        #pokimon_box {
+            background-color: antiquewhite;
             margin: 10px;
             padding: 10px;
             font-family: cursive;
+            height: 120px;
+            width: 240px;
+            border: 1px solid #ccc;
+            font: 16px/26px Georgia, Garamond, Serif;
+            overflow: auto;
         }
-        h1{
-            background-color:antiquewhite;
+        
+        h1 {
+            background-color: antiquewhite;
             margin: 10px;
             padding: 10px;
-            color:chocolate;
+            color: chocolate;
             font-size: large;
             font-family: cursive;
         }
-        
     </style>
     <title>pokimons list</title>
 </head>
+
 <body>
     <h1><b>
             All Pokimones
@@ -35,22 +43,28 @@
     </div>
 </body>
 <script>
-    fetch("/api/pokimons").then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        appendData(data);
-    })
-    .catch(function(err){
-      console.log("error : " + err);
-    })
-    function appendData(data){
-        var container = document.getElementById("pokimon_box");
-        for (var i = 0 ; i < data.length; i++){
-                var div = document.createElement("div");
-                div.innerHTML = 'id : ' + data[i].id + ' ,name : ' + data[i].name + '  ,type : ' + data[i].type; 
-                container.appendChild(div); 
+    fetch("/api/pokimons").then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            appendData(data);
+        })
+        .catch(function(err) {
+            console.log("error : " + err);
+        })
+
+    function appendData(data) {
+        var pic = new Image(100, 100);
+        pic.src =
+
+            var container = document.getElementById("pokimon_box");
+        for (var i = 0; i < data.length; i++) {
+            var div = document.createElement("div");
+            div.innerHTML = 'id : ' + data[i].id + ' ,name : ' + data[i].name + '  ,type : ' + data[i].type;
+            container.appendChild(div);
+            container.appendChild(pic);
         }
     }
- </script>
+</script>
+
 </html>

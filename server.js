@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 const { send } = require('process');
 app = express();
-const port = 3035 ;
+const port = 3035 ; 
 let popularty_pokimons = new Array(150).fill(0);
 
-
+const img = require('./static-assets/images/001.png');
 const pokimon_data = require('./data/pokemons.json');
 /* crate array for popularty of pokimons */
 
@@ -16,7 +16,9 @@ app.use("/popularty",function(req, res){
 /* give acsses from html to all the files in folder static-assets */
 app.use("/assets",express.static("static-assets"));
 
-app.get("/api/pic/")
+app.get('/api/pokimons/pic',(req, res)=>{
+    
+})
 
 
 /* return pokimon by id    */
