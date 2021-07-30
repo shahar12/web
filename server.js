@@ -7,7 +7,7 @@ let popularty_pokimons = new Array(150).fill(0);
 
 const img = require('./static-assets/images/001.png');
 const pokimon_data = require('./data/pokemons.json');
-/* crate array for popularty of pokimons */
+/* create array for popularty of pokimons */
 
 app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
@@ -47,7 +47,7 @@ app.get('/api/pokimons',(req, res)=>{
 });
 
 app.get("/",function(req,res){
-    res.sendFile(path.resolve('./pages/index.html'));
+   res.sendFile(path.resolve('./pages/index.html'));
 })
 /* bring back home page  */
 
