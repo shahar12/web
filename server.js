@@ -3,6 +3,7 @@ const path = require('path');
 const { send } = require('process');
 app = express();
 const port = 3035 ; 
+var pic; 
 let popularty_pokimons = new Array(150).fill(0);
 
 const img = require('./static-assets/images/001.png');
@@ -13,11 +14,9 @@ app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
 });
 
-/* give acsses from html to all the files in folder static-assets */
-app.use("/assets",express.static("static-assets"));
-
 app.get('/api/pokimons/pic',(req, res)=>{
-    
+    pic = '~/image/001.png' ; 
+    res.sendFile(path.resolve('./image/001.png'));
 })
 
 
@@ -26,7 +25,7 @@ app.get('/api/pokimons/:id',(req, res)=>{
     result = pokimon_data;
     if(req.params.id != 0 )
         popularty_pokimons[req.params.id-1]++;
-        res.sendFile(path.resolve());
+        res.send(result);
 });
 
 app.get('/pages/list_pokimon.html',(req,res)=>{
