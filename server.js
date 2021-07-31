@@ -1,11 +1,12 @@
+const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-const { send } = require('process');
 app = express();
+/* var  */
 const port = 3035 ; 
-var pic; 
 let popularty_pokimons = new Array(150).fill(0);
 app.use("/assets", express.static("static-assets"));
+app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
 
 /* create array for popularty of pokimons */
