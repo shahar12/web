@@ -5,8 +5,6 @@ app = express();
 const port = 3035 ; 
 var pic; 
 let popularty_pokimons = new Array(150).fill(0);
-
-const img = require('./static-assets/images/001.png');
 const pokimon_data = require('./data/pokemons.json');
 /* create array for popularty of pokimons */
 
@@ -15,7 +13,7 @@ app.use("/popularty",function(req, res){
 });
 
 /* return pokimon by id    */
-app.get('/api/pok/:id',(req, res)=>{
+app.get("/data/pokimons/:id",(req, res)=>{
     const result = pokimon_data.map((pokimon)=>{
         return{
             id: pokimon.id,
@@ -23,10 +21,11 @@ app.get('/api/pok/:id',(req, res)=>{
             type: pokimon.type,
             base : pokimon.base
         }
-    })
-    if(req.params.id != 0 )
+    });
+    if(req.params.id != 0 ){
         popularty_pokimons[req.params.id-1]++;
-        res.send(result[id]);
+    }
+    res.send(result[req.params.id]);
 });
 
 app.get('/pages/list_pokimon.html',(req,res)=>{
@@ -59,7 +58,8 @@ app.listen(port,function(error){
     }
 });
 
-//404 not found//
+/* //404 not found//
 app.use((req,res)=>{
    res.sendfile(path.resolve("./pages/404.html")); 
 });
+ */
