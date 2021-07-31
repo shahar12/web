@@ -5,15 +5,16 @@ app = express();
 const port = 3035 ; 
 var pic; 
 let popularty_pokimons = new Array(150).fill(0);
-const pokimon_data = require('./data/pokemons.json');
-/* create array for popularty of pokimons */
+app.use("/assets", express.static("static-assets"));
+const pokimon_data = require('./static-assets/data/pokemons.json');
 
+/* create array for popularty of pokimons */
 app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
 });
 
 /* return pokimon by id    */
-app.get("/data/pokimons/:id",(req, res)=>{
+app.get("/assets/data/pokimons/:id",(req, res)=>{
     const result = pokimon_data.map((pokimon)=>{
         return{
             id: pokimon.id,
@@ -29,7 +30,7 @@ app.get("/data/pokimons/:id",(req, res)=>{
 });
 
 app.get('/pages/list_pokimon.html',(req,res)=>{
-    res.sendFile(path.resolve('./pages/list_pokimon.html'));
+    res.sendFile(path.resolve('./list_pokimon.html'));
 });
 
 
@@ -46,7 +47,7 @@ app.get('/api/pokimons',(req, res)=>{
 });
 
 app.get("/",function(req,res){
-   res.sendFile(path.resolve('./pages/index.html'));
+   res.sendFile(path.resolve('./index.html'));
 })
 /* bring back home page  */
 
@@ -58,8 +59,7 @@ app.listen(port,function(error){
     }
 });
 
-/* //404 not found//
+//404 not found//
 app.use((req,res)=>{
-   res.sendfile(path.resolve("./pages/404.html")); 
+   res.sendfile(path.resolve("./404.html")); 
 });
- */

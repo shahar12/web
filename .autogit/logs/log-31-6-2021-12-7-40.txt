@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Sat Jul 31 2021 12:07:40 GMT+0300 (שעון ישראל (קיץ))
+------------------------------------------------------
+
+Modified files:
+* pages/list_pokimon.html
+* pages/list_pokimon.js
+* pages/pokimon_id.html
+* pages/pokimon_id.js
+* server.js
+
+
+Created files:
+* .autogit/logs/log-31-6-2021-11-37-20.txt
+
+
+Deleted files:
+
+
+Renamed files:
