@@ -37,13 +37,13 @@ app.get('/pages/list_pokimon.html',(req,res)=>{
 
 /* return all pokimons array */ 
 app.get('/api/pokimons',(req, res)=>{
-    result = pokimon_data.map((perms)=>{
+    const result = pokimon_data.map((perms)=>{
         return{
             id : perms.id,
             name : perms.name,
             type : perms.type
         }
-    })
+    });
     res.send(result); 
 });
 
