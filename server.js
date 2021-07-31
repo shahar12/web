@@ -14,18 +14,19 @@ app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
 });
 
-app.get('/api/pokimons/pic',(req, res)=>{
-    pic = '~/image/001.png' ; 
-    res.sendFile(path.resolve('./image/001.png'));
-})
-
-
 /* return pokimon by id    */
-app.get('/api/pokimons/:id',(req, res)=>{
-    result = pokimon_data;
+app.get('/api/pok/:id',(req, res)=>{
+    const result = pokimon_data.map((pokimon)=>{
+        return{
+            id: pokimon.id,
+            name: pokimon.name,
+            type: pokimon.type,
+            base : pokimon.base
+        }
+    })
     if(req.params.id != 0 )
         popularty_pokimons[req.params.id-1]++;
-        res.send(result);
+        res.send(result[id]);
 });
 
 app.get('/pages/list_pokimon.html',(req,res)=>{
