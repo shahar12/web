@@ -5,7 +5,7 @@ body {
     padding: 5px;
 }
 
-#pokimon_box {
+.scroll_box {
     background-color: antiquewhite;
     margin: 10px;
     padding: 10px;
