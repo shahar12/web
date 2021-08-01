@@ -1,27 +1,25 @@
-body {
-    background-color: chocolate;
-    text-indent: 20px;
-    margin: 5px;
-    padding: 5px;
-}
 
 .scroll_box {
     background-color: antiquewhite;
     margin: 10px;
     padding: 10px;
     font-family: cursive;
-    height: 120px;
-    width: 240px;
+    height: 240px;
+    width: 670px;
     border: 1px solid #ccc;
     font: 16px/26px Georgia, Garamond, Serif;
     overflow: auto;
 }
 
-h1 {
-    background-color: antiquewhite;
-    margin: 10px;
-    padding: 10px;
-    color: chocolate;
-    font-size: large;
+h1{
+    width:670px;
+    text-align: center;
+}
+
+.pokimon_inner_box{
     font-family: cursive;
+    border: 1px solid #ccc;
+    margin: 2px;
+    padding: 2px;
+    align-items: left;
 }

@@ -1,0 +1,25 @@
+body {
+    background-color: chocolate;
+    text-indent: 20px;
+    margin: 5px;
+    padding: 5px;
+}
+
+h1 , h3 , p , .text_box  {
+    background-color: antiquewhite;
+    margin: 10px;
+    padding: 10px;
+    color: chocolate;
+    font-size: large;
+    font-family: cursive;
+}
+
+button{
+    color:coral;
+    border:1px solid;
+    border-radius: 5px;
+    background-color:chocolate;
+    font-size: large;
+    font-family: cursive;
+    
+}
