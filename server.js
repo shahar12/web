@@ -12,9 +12,14 @@ app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
 });
 
-/* give acsses from html to all the files in folder static-assets */
-app.use("/assets",express.static("static-assets"));
 
+/* give acsses from html to all the files in folder static-assets */
+app.use("/assets/",express.static("./static-assets/images"));
+
+
+app.get("/static-assets/images/:img_id",(req, res)=>{
+    res.send();
+})
 
 /* return pokimon by id    */
 app.get('/api/pokimons/:id',(req, res)=>{
