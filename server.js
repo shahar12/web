@@ -30,10 +30,15 @@ app.get("/assets/data/pokimons/:id",(req, res)=>{
     res.send(result[req.params.id]);
 });
 
-app.get('/pages/list_pokimon.html',(req,res)=>{
+app.get('/list_pokimon.html',(req,res)=>{
     res.sendFile(path.resolve('./list_pokimon.html'));
 });
 
+app.get('/pokimon/page/:id',(req,res)=>{
+    pocObjNumInt = parseInt(req.params.id);
+    popularty_pokimons[pocObjNumInt]++;
+    res.sendFile(path.resolve('./pokimon_id.html'));
+})
 
 /* return all pokimons array */ 
 app.get('/api/pokimons',(req, res)=>{
@@ -59,6 +64,9 @@ app.listen(port,function(error){
         console.log('server is listening on port '+ port)
     }
 });
+
+
+
 
 //404 not found//
 app.use((req,res)=>{
