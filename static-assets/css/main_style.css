@@ -5,6 +5,10 @@ body {
     padding: 5px;
 }
 
+li , ol {
+    cursor: pointer;
+}
+
 h1 , h3 , p , .text_box  {
     background-color: antiquewhite;
     margin: 10px;

@@ -2,13 +2,16 @@
 <html>
 <link rel="stylesheet" href="style.css">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/main_style.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/main_style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/pokimon_id.css" />  
+    <title>pokimon page</title>
 </head>
 <body>
-    <h1><b>
-    </b></h1>
-    <div class="pokimon_pic ">
-    </div>
+    <h1>pokimon page<b></b></h1>
+    <div id="pokimon_pic"></div>
+    <div id="pokimon_table">
+        <button id="type_one"></button>
+        <button id="type_tow"></button>
     <table>
         <!-- heder of table -->
         <tr>
@@ -19,19 +22,20 @@
             <th>sp.Defense</th>
             <th>Speed</th>
         </tr>
-        <!-- data of table in the same order  as haders  -->
+        <!-- data of table in the same order  as header  -->
         <tr>
-            <td class="HP"></td>
-            <td class="attack"></td>
-            <td class="defense"></td>
-            <td class="sp.Attack"></td>
-            <td class="sp.defense"></td>
-            <td class="speed"></td>
+            <td id="HP"></td>
+            <td id="attack"></td>
+            <td id="defense"></td>
+            <td id="sp.Attack"></td>
+            <td id="sp.defense"></td>
+            <td id="speed"></td>
         </tr>
     </table>
+    </div>
 </body>
 
-<script type="text/javascript" src="./pokimon_id.js">
+<script type="text/javascript" src="/js/pokimon_id.js">
 </script>
 
 </html>

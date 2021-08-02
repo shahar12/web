@@ -16,17 +16,14 @@ async function main(){
             var str_id = "00"+id+".png";
             var url = "/image/"+str_id;
             pic.src =  url ; 
-            console.log({url}); 
         }else if(i < 100 ){
             var str_id = "0"+id+".png"; 
             var url = "/image/"+str_id;
             pic.src =  url ; 
-            console.log({url});  
         }else {
             var str_id = id+".png"; 
             var url = "/image/"+str_id;
             pic.src =  url ; 
-            console.log({url});  
         }
         pic.id = str_id;
         pic.onclick=function(){ window.location.href = "http://localhost:3035/pokimon/page/"+String(id);};  
@@ -40,9 +37,9 @@ async function main(){
             box.className = "pokimon_inner_box";
             var  pic  = new Image(75,75);
             var div = document.createElement("div");
-            div.innerHTML = `<p>`+'id : ' + data[i].id + `<br>`  
+            div.innerHTML = 'id : ' + data[i].id + `<br>`  
             +' name : ' + data[i].name + `<br>`+
-            ' type : ' + data[i].type+`</p>`;
+            ' type : ' + data[i].type;
             if(div && pic && box ){
                 box.appendChild(div);
                 box.appendChild(create_pic(pic,i,data[i].id));
