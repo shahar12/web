@@ -1,10 +1,8 @@
 console.log("hello world");
 
 async function main(){
-    const pok_data = await fetch('/api/pokimon/page').then(res => res.json())
-    console.log({pok_data})
-    
-    
+    const data = await fetch("/api/pokimon/page").then(res => res.json());
+    console.log({data});
 }main();
 
 

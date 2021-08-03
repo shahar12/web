@@ -1,7 +1,7 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-var  pokimon_id =0;
+const  pokimon_id = "0";
 app = express();
 /* var  */
 const port = 3035 ; 
@@ -35,6 +35,7 @@ app.use("/popularty",function(req, res){
             base: obj.base
         }
     });
+    
     for(i=0 ; i<result.length; i++){
         if(result[i].id == top3[0] ){
             topThreeMap[0]= result[i];
@@ -69,7 +70,7 @@ app.get('/list_pokimon.html',(req,res)=>{
 
 app.get('/pokimon/page/:id',(req,res)=>{ 
     var pocObjNumInt = parseInt(req.params.id);
-    pokimon_id = pocObjNumInt ; 
+    pokimon_id = String(pocObjNumInt); 
     popularty_pokimons[pocObjNumInt]++;
     res.sendFile(path.resolve('./pokimon_id.html'));
 })
@@ -98,9 +99,6 @@ app.listen(port,function(error){
         console.log('server is listening on port '+ port)
     }
 });
-
-
-
 
 //404 not found//
 app.use((req,res)=>{
