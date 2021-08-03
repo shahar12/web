@@ -9,7 +9,7 @@ const popularty_pokimons = new Map();
 app.use("/assets", express.static("static-assets"));
 app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
-
+/* create array for popularty of pokimons */
 var timer = setInterval(function(){
     for(let i=0; i<151;i++){
         popularty_pokimons[String(i+1)]=0;
@@ -18,7 +18,7 @@ var timer = setInterval(function(){
  },100);
 
 
-/* create array for popularty of pokimons */
+/* return top  3 bigest pokimon  */
 app.use("/popularty",function(req, res){
     var sorted = Object.keys(popularty_pokimons).sort(function(a,b) {
          return popularty_pokimons[b] - popularty_pokimons[a];

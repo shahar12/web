@@ -1,27 +1,21 @@
 console.log("hello home page");
 
 async function main(){
-     fetch('/poplurty')
-    .then(res=>JSON.parse(res))
-    .then(data=>{
-        appendData(data);
-    })
-    .catch((err)=>{
-        console.warn(err.responseText)
-        console.log("error : " + err )
-    })
+    const data = await fetch("/popularty").then(res => res.json()); 
+    console.log({data});
+  
 }main();
 
 
-function appendData(json){
+function appendData(data){
     const container = document.getElementById("list_pok");
     if(json.length != 0 ){
         for (let i = 0 ; i < json.length; i++){
             var  pic  = new Image(75,75);
             var div = document.createElement("div");
-            div.innerHTML = 'id : ' + json[i].id + `<br>`  
-            +' name : ' + json[i].name + `<br>`+
-            ' type : ' + json[i].type;
+            div.innerHTML = 'id : ' + data[i].id + `<br>`  
+            +' name : ' + data[i].name + `<br>`+
+            ' type : ' + data[i].type;
             if(div && pic){
                 container.appendChild(div);
                 container.appendChild(create_pic(pic,parseIntdata[i].id));

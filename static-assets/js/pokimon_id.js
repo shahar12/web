@@ -2,9 +2,9 @@ console.log("hello world");
 
 async function main(){
     const pok_data = await fetch('/api/pokimon/page')
-    .then(res => res.json())
+    .then(res => res.json)
     .then(function(data){
-        appendData(JSON.stringify(data));
+        appendData(data);
     })
     .catch(function(err){
         console.log("error : " + err);
