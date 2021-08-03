@@ -2,27 +2,41 @@ console.log("hello home page");
 
 async function main(){
     const data = await fetch('/poplurty')
+    .then(res=>res.json())
+    .then(json=>{
+        appendData(json);
+    })
     .catch((err)=>{
+        console.warn(err.responseText)
         console.log("error : " + err )
     })
-    presentTrheeBigest(data);
 }main();
 
 
-function presentTrheeBigest(data){
-    const presnt_pok = document.getElementById("list_pok");
-    for(i = 0 ; i < data.length ; i++){
-        if(data[i]){
-            var pokimon = document.createElement("div");
-            pokimon.appendChild(create_pic(data[i].id));
-            pokimon.innerHTML = "name : " + data[i].name ;
-            presnt_pok.appendChild(pokimon);
+function appendData(data){
+    const container = document.getElementById("list_pok");
+    if(data.length != 0 ){
+        for (let i = 0 ; i < data.length; i++){
+            var  pic  = new Image(75,75);
+            var div = document.createElement("div");
+            div.innerHTML = 'id : ' + data[i].id + `<br>`  
+            +' name : ' + data[i].name + `<br>`+
+            ' type : ' + data[i].type;
+            if(div && pic){
+                container.appendChild(div);
+                container.appendChild(create_pic(pic,parseIntdata[i].id));
+                container.appendChild(box);
+            }
         }
+    }else {
+        container.innerHTML = "no data";
     }
+    
 }
 
-function create_pic(id){
-    let pic = new Image(75,75);
+
+
+function create_pic(pic,id){
     let button  = document.createElement("button");
     if(id < 9 ){  
         let str_id = "00"+id+".png";

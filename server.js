@@ -12,10 +12,10 @@ const pokimon_data = require('./static-assets/data/pokemons.json');
 
 /* create array for popularty of pokimons */
 app.use("/popularty",function(req, res){
-    var sorted = Object.keys(popularty_pokimons).sort(function(a, b) {
-        return popularty_pokimons[b] - popularty_pokimons[a];
+    var sorted = Object.keys(popularty_pokimons).sort(function(a,b) {
+         return popularty_pokimons[b] - popularty_pokimons[a];
     });
-    var top3 = sorted.slice(0, 3);
+    var top3 = sorted.slice(0,3);
     var topThreeMap = new Array();
     const result = pokimon_data.map((obj)=>{
         return {
