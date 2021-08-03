@@ -1,7 +1,8 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-var  pokimon_id = "0";
+var  pokimon_id = " ";
+var isON = false;
 app = express();
 /* var  */
 const port = 3035 ; 
@@ -18,7 +19,6 @@ var timer = setInterval(function(){
     }
     clearInterval(timer); 
  },100);
-
 
 /* return top  3 bigest pokimon  */
 app.use("/popularty",function(req, res){
@@ -68,11 +68,11 @@ app.get('/list_pokimon.html',(req,res)=>{
     res.sendFile(path.resolve('./list_pokimon.html'));
 });
 
-app.get('/pokimon/page/:id',(req,res)=>{ 
+app.get('/pokimon/page/:id',(req,res)=>{
     pokimon_id = req.params.id.toString();
-    var pocObjNumInt = parseInt(pokimon_id);
+    var pokimon_number = parseInt(pokimon_id);
     console.log("get number 2, id : "+pokimon_id);
-    popularty_pokimons[pocObjNumInt]++;
+    popularty_pokimons[pokimon_number]++;
     res.sendFile(path.resolve('./pokimon_id.html'));
 })
 
