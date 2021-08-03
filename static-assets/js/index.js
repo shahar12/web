@@ -3,23 +3,25 @@ console.log("hello home page");
 async function main(){
     const data = await fetch("/popularty").then(res => res.json()); 
     console.log({data});
+    appendData(data);
   
 }main();
 
 
 function appendData(data){
     const container = document.getElementById("list_pok");
-    if(json.length != 0 ){
-        for (let i = 0 ; i < json.length; i++){
+    if(data.length != 0 ){
+        for (let i = 0 ; i < data.length; i++){
             var  pic  = new Image(75,75);
             var div = document.createElement("div");
+            div.className = "pok_data";
+            pic.className = "pok_pic";
             div.innerHTML = 'id : ' + data[i].id + `<br>`  
             +' name : ' + data[i].name + `<br>`+
             ' type : ' + data[i].type;
             if(div && pic){
                 container.appendChild(div);
-                container.appendChild(create_pic(pic,parseIntdata[i].id));
-                container.appendChild(box);
+                container.appendChild(create_pic(pic,parseInt(data[i].id)));
             }
         }
     }else {

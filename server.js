@@ -9,6 +9,8 @@ const popularty_pokimons = new Map();
 app.use("/assets", express.static("static-assets"));
 app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
+
+
 /* create array for popularty of pokimons */
 var timer = setInterval(function(){
     for(let i=0; i<151;i++){
