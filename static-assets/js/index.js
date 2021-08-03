@@ -1,10 +1,10 @@
 console.log("hello home page");
 
 async function main(){
-    const data = await fetch('/poplurty')
+     await fetch('/poplurty')
     .then(res=>res.json())
-    .then(json=>{
-        appendData(json);
+    .then(data=>{
+        appendData(data);
     })
     .catch((err)=>{
         console.warn(err.responseText)
@@ -13,15 +13,15 @@ async function main(){
 }main();
 
 
-function appendData(data){
+function appendData(json){
     const container = document.getElementById("list_pok");
-    if(data.length != 0 ){
-        for (let i = 0 ; i < data.length; i++){
+    if(json.length != 0 ){
+        for (let i = 0 ; i < json.length; i++){
             var  pic  = new Image(75,75);
             var div = document.createElement("div");
-            div.innerHTML = 'id : ' + data[i].id + `<br>`  
-            +' name : ' + data[i].name + `<br>`+
-            ' type : ' + data[i].type;
+            div.innerHTML = 'id : ' + json[i].id + `<br>`  
+            +' name : ' + json[i].name + `<br>`+
+            ' type : ' + json[i].type;
             if(div && pic){
                 container.appendChild(div);
                 container.appendChild(create_pic(pic,parseIntdata[i].id));

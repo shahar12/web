@@ -5,7 +5,7 @@ var  pokimon_id =0;
 app = express();
 /* var  */
 const port = 3035 ; 
-let popularty_pokimons = new Array(150).fill(0);
+const popularty_pokimons = new Array(150).fill(0);
 app.use("/assets", express.static("static-assets"));
 app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
