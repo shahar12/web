@@ -1,7 +1,7 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-let  pokimon_id = " ";
+var  pokimon_id = 0;
 app = express();
 /* var  */
 const port = 3035 ; 
@@ -25,7 +25,7 @@ app.get("/api/pokimon/page",(req, res)=>{
             base : pokimon.base
         }
     });
-    console.log("id : "+pokimon_id);
+    console.log("get number 1, id : "+pokimon_id);
     res.send(result[parseInt(pokimon_id)]);    
 });
 
@@ -33,9 +33,9 @@ app.get('/list_pokimon.html',(req,res)=>{
     res.sendFile(path.resolve('./list_pokimon.html'));
 });
 
-app.get('/pokimon/page/:id',(req,res)=>{
-    pokimon_id = req.params.id.toString();
-    pocObjNumInt = parseInt(req.params.id);
+app.get('/pokimon/page/:id',(req,res)=>{ 
+    var pocObjNumInt = parseInt(req.params.id);
+    pokimon_id = pocObjNumInt ; 
     popularty_pokimons[pocObjNumInt]++;
     res.sendFile(path.resolve('./pokimon_id.html'));
 })
