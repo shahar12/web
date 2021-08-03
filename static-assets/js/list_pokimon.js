@@ -27,7 +27,7 @@ async function main(){
         }
         pic.src = url ; 
         pic.onclick=function(){window.location.href = "http://localhost:3035/pokimon/page/"+id;};
-        pic.className ="pokimon_picture"
+        pic.className ="pokimon_picture";
         return pic; 
     }
 
@@ -38,6 +38,7 @@ async function main(){
             box.className = "pokimon_inner_box";
             var  pic  = new Image(70,70);
             var div = document.createElement("div");
+            div.className = "pokimon_data"
             div.innerHTML = 'id : ' + data[i].id + `<br>`  
             +' name : ' + data[i].name + `<br>`+
             ' type : ' + data[i].type;
@@ -48,7 +49,4 @@ async function main(){
             }
         }
     }
-};
-
-
-main();
+}main();
