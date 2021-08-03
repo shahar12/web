@@ -5,10 +5,18 @@ var  pokimon_id =0;
 app = express();
 /* var  */
 const port = 3035 ; 
-const popularty_pokimons = new Array(150).fill(0);
+const popularty_pokimons = new Map();
 app.use("/assets", express.static("static-assets"));
 app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
+
+var timer = setInterval(function(){
+    for(let i=0; i<151;i++){
+        popularty_pokimons[String(i+1)]=0;
+    }
+    clearInterval(timer); 
+ },100);
+
 
 /* create array for popularty of pokimons */
 app.use("/popularty",function(req, res){

@@ -1,8 +1,8 @@
 console.log("hello home page");
 
 async function main(){
-     await fetch('/poplurty')
-    .then(res=>res.json())
+     fetch('/poplurty')
+    .then(res=>JSON.parse(res))
     .then(data=>{
         appendData(data);
     })
