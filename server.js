@@ -1,7 +1,7 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-var  pokimon_id = 0;
+var  pokimon_id =0;
 app = express();
 /* var  */
 const port = 3035 ; 
@@ -12,7 +12,31 @@ const pokimon_data = require('./static-assets/data/pokemons.json');
 
 /* create array for popularty of pokimons */
 app.use("/popularty",function(req, res){
-    res.send(popularty_pokimons);
+    var sorted = Object.keys(popularty_pokimons).sort(function(a, b) {
+        return popularty_pokimons[b] - popularty_pokimons[a];
+    });
+    var top3 = sorted.slice(0, 3);
+    var topThreeMap = new Array();
+    const result = pokimon_data.map((obj)=>{
+        return {
+            id: obj.id,
+            name: obj.name,
+            type: obj.type,
+            base: obj.base
+        }
+    });
+    for(i=0 ; i<result.length; i++){
+        if(result[i].id == top3[0] ){
+            topThreeMap[0]= result[i];
+        }
+        else if(result[i].id == top3[1]){
+            topThreeMap[1]=result[i];
+        }
+        else if(result[i].id == top3[2]){
+            topThreeMap[2]=result[i];
+        }
+    }
+    res.send(topThreeMap);
 });
 
 /* return pokimon by id    */
