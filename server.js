@@ -52,7 +52,7 @@ app.use("/popularty",function(req, res){
 
 
 /* return pokimon by id    */
-app.get('/pok/data/:x',(req, res)=>{
+app.get('/pok/data/',(req, res)=>{
     const num_pok = parseInt(pokimon_id);
     const result = pokimon_data.map((pokimon)=>{
         return{
@@ -71,7 +71,8 @@ app.get('/list_pokimon.html',(req,res)=>{
 });
 
 app.get('/pokimon/page/:id',(req,res)=>{
-    pokimon_id = req.params.id.toString();
+    if(req.params.id != "style.css")
+        pokimon_id = req.params.id.toString();
     var pokimon_number = parseInt(pokimon_id);
     console.log("get number 2, id : "+pokimon_id);
     popularty_pokimons[pokimon_number]++;
