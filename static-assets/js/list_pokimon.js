@@ -25,8 +25,8 @@ async function main(){
             var url = "/image/"+str_id;
             pic.src =  url ; 
         }
-        pic.id = str_id;
-        pic.onclick=function(){ window.location.href = "http://localhost:3035/pokimon/page/"+String(id);};  
+        pic.id = String(id);
+        pic.onclick=function(){ window.location.href = "http://localhost:3035/pokimon/page/"+String(id);};          
         return pic ; 
     }
 

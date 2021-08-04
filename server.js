@@ -1,7 +1,7 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-let  pokimon_id = " ";
+var  pokimon_id = "0";
 app = express();
 /* var  */
 const port = 3035 ; 
@@ -15,8 +15,10 @@ app.use("/popularty",function(req, res){
     res.send(popularty_pokimons);
 });
 
+
 /* return pokimon by id    */
-app.get("/api/pokimon/page",(req, res)=>{
+app.get('/pok/data/:x',(req, res)=>{
+    const num_pok = parseInt(pokimon_id);
     const result = pokimon_data.map((pokimon)=>{
         return{
             id: pokimon.id,
@@ -25,8 +27,9 @@ app.get("/api/pokimon/page",(req, res)=>{
             base : pokimon.base
         }
     });
-    console.log("id : "+pokimon_id);
-    res.send(result[parseInt(pokimon_id)]);    
+     console.log("2 id : "+String(num_pok));
+    if(!isNaN(num_pok))
+        res.send(result[num_pok]);    
 });
 
 app.get('/list_pokimon.html',(req,res)=>{
@@ -34,10 +37,13 @@ app.get('/list_pokimon.html',(req,res)=>{
 });
 
 app.get('/pokimon/page/:id',(req,res)=>{
-    pokimon_id = req.params.id.toString();
-    pocObjNumInt = parseInt(req.params.id);
-    popularty_pokimons[pocObjNumInt]++;
-    res.sendFile(path.resolve('./pokimon_id.html'));
+    if(Number.isInteger(parseInt(req.params.id))){
+        pokimon_id = String(req.params.id);
+        console.log("1 ,  id : "+pokimon_id);
+        pocObjNumInt = parseInt(req.params.id);
+        popularty_pokimons[pocObjNumInt]++;
+        res.sendFile(path.resolve('./pokimon_id.html'));
+    }
 })
 
 /* return all pokimons array */ 
