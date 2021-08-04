@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue Aug 03 2021 20:18:03 GMT+0300 (שעון ישראל (קיץ))
+------------------------------------------------------
+
+Modified files:
+* server.js
+* static-assets/js/index.js
+* static-assets/js/pokimon_id.js
+
+
+Created files:
+* .autogit/logs/log-3-7-2021-19-47-43.txt
+
+
+Deleted files:
+
+
+Renamed files:

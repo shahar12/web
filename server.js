@@ -1,18 +1,53 @@
 const { SSL_OP_NETSCAPE_CHALLENGE_BUG } = require('constants');
 const express = require('express');
 const path = require('path');
-var  pokimon_id = "0";
+var  pokimon_id = " ";
+var isON = false;
 app = express();
 /* var  */
 const port = 3035 ; 
-let popularty_pokimons = new Array(150).fill(0);
+const popularty_pokimons = new Map();
 app.use("/assets", express.static("static-assets"));
 app.use(express.static(path.join(__dirname, 'static-assets')));
 const pokimon_data = require('./static-assets/data/pokemons.json');
 
+
 /* create array for popularty of pokimons */
+var timer = setInterval(function(){
+    for(let i=0; i<151;i++){
+        popularty_pokimons[String(i+1)]=0;
+    }
+    clearInterval(timer); 
+ },100);
+
+/* return top  3 bigest pokimon  */
 app.use("/popularty",function(req, res){
-    res.send(popularty_pokimons);
+    var sorted = Object.keys(popularty_pokimons).sort(function(a,b) {
+         return popularty_pokimons[b] - popularty_pokimons[a];
+    });
+    var top3 = sorted.slice(0,3);
+    var topThreeMap = new Array();
+    const result = pokimon_data.map((obj)=>{
+        return {
+            id: obj.id,
+            name: obj.name,
+            type: obj.type,
+            base: obj.base
+        }
+    });
+
+    for(i=0 ; i<result.length; i++){
+        if(result[i].id == top3[0] ){
+            topThreeMap[0]= result[i];
+        }
+        else if(result[i].id == top3[1]){
+            topThreeMap[1]=result[i];
+        }
+        else if(result[i].id == top3[2]){
+            topThreeMap[2]=result[i];
+        }
+    }
+    res.send(topThreeMap);
 });
 
 
@@ -27,9 +62,8 @@ app.get('/pok/data/:x',(req, res)=>{
             base : pokimon.base
         }
     });
-     console.log("2 id : "+String(num_pok));
-    if(!isNaN(num_pok))
-        res.send(result[num_pok]);    
+    console.log("get number 1, id : "+pokimon_id);
+    res.send(result[parseInt(pokimon_id)]);    
 });
 
 app.get('/list_pokimon.html',(req,res)=>{
@@ -37,13 +71,11 @@ app.get('/list_pokimon.html',(req,res)=>{
 });
 
 app.get('/pokimon/page/:id',(req,res)=>{
-    if(Number.isInteger(parseInt(req.params.id))){
-        pokimon_id = String(req.params.id);
-        console.log("1 ,  id : "+pokimon_id);
-        pocObjNumInt = parseInt(req.params.id);
-        popularty_pokimons[pocObjNumInt]++;
-        res.sendFile(path.resolve('./pokimon_id.html'));
-    }
+    pokimon_id = req.params.id.toString();
+    var pokimon_number = parseInt(pokimon_id);
+    console.log("get number 2, id : "+pokimon_id);
+    popularty_pokimons[pokimon_number]++;
+    res.sendFile(path.resolve('./pokimon_id.html'));
 })
 
 /* return all pokimons array */ 
@@ -70,9 +102,6 @@ app.listen(port,function(error){
         console.log('server is listening on port '+ port)
     }
 });
-
-
-
 
 //404 not found//
 app.use((req,res)=>{
